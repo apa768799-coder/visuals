@@ -1,0 +1,23 @@
+package com.example.client.util;
+
+import net.minecraft.client.MinecraftClient;
+
+/**
+ * Утилиты для работы с FPS и памятью.
+ */
+public class FpsHelper {
+
+    public static int getFps() {
+        return MinecraftClient.getInstance().getCurrentFps();
+    }
+
+    public static boolean isLowFps() {
+        int fps = getFps();
+        return fps > 0 && fps < 60;
+    }
+
+    public static long getUsedMemoryMb() {
+        Runtime rt = Runtime.getRuntime();
+        return (rt.totalMemory() - rt.freeMemory()) / (1024 * 1024);
+    }
+}
